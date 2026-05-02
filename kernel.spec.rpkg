@@ -1,0 +1,28 @@
+# {{{ git_dir_setup_macro }}}
+Name:           kernel-smech
+Version:        7.0.3
+Release:        1%{?dist}
+Summary:        Smech-Sovereign Linux Kernel
+
+# Use the kernel.org URL as the source here, NOT as the git clone URL
+Source0:        https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.3.tar.xz
+
+%description
+Mainline kernel optimized for SmechBoard and Zen 5 architecture.
+
+%prep
+%setup -q -n linux-7.0.3
+
+%build
+# Use your custom config (ensure it's in your git repo)
+cp %{_sourcedir}/smech_zen5.config .config
+make olddefconfig
+make %{?_smp_mflags}
+
+%install
+make %{?_smp_mflags} modules_install INSTALL_MOD_PATH=%{buildroot}
+make %{?_smp_mflags} install INSTALL_PATH=%{buildroot}/boot
+
+%files
+/boot/*
+/lib/modules/*
