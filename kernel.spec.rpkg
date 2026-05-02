@@ -3,6 +3,9 @@ Name:           kernel-smech
 Version:        7.0.3
 Release:        1%{?dist}
 Summary:        Smech-Sovereign Linux Kernel
+License:        GPLv2
+URL:            https://www.kernel.org/
+Source0:        https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.3.tar.xz
 
 # Use the kernel.org URL as the source here, NOT as the git clone URL
 Source0:        https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.3.tar.xz
