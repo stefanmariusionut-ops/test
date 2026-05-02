@@ -1,0 +1,5 @@
+srpkg:
+	dnf install -y rpkg wget
+	# Download the actual source tarball during SRPM creation
+	wget https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.3.tar.xz
+	rpkg srpm --outdir=$(outdir) --spec kernel.spec.rpkg
